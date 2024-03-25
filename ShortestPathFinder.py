@@ -35,7 +35,7 @@ class Queue:
 
 def createMaze1():
     maze = []
-    maze.append(["#","#","#","#","#","O","#"])
+    maze.append(["#","#","#","#","#","S","#"])
     maze.append(["#"," "," "," ","#"," ","#"])
     maze.append(["#"," ","#"," ","#"," ","#"])
     maze.append(["#"," ","#"," "," "," ","#"])
@@ -46,7 +46,7 @@ def createMaze1():
 
 def createMaze2():
     maze = []
-    maze.append(["#","#","#","#","#","O","#"])
+    maze.append(["#","#","#","#","#","S","#"])
     maze.append(["#"," "," "," ","#"," ","#"])
     maze.append(["#"," ","#","#","#"," ","#"])
     maze.append(["#"," ","#"," "," "," ","#"])
@@ -59,7 +59,7 @@ def printMaze(maze, path=""):
     start = 0
     
     for x in range(len(maze[0])):
-        if maze[0][x] == "O":
+        if maze[0][x] == "S":
             start = x
  
     i = start
@@ -87,7 +87,7 @@ def printMaze(maze, path=""):
 def valid(maze, moves):
     start = 0
     for x in range(len(maze[0])):
-        if maze[0][x] == "O":
+        if maze[0][x] == "S":
             start = x
 
     i = start
@@ -112,7 +112,7 @@ def valid(maze, moves):
 def findEnd(maze, moves):
     start = 0
     for x in range(len(maze[0])):
-        if maze[0][x] == "O":
+        if maze[0][x] == "S":
             start = x
 
     i = start
@@ -146,13 +146,16 @@ def main():
             if valid(maze, put):
                 nums.enqueue(put)
                 
-    maze = createMaze1()
+    nums2 = Queue()
+    nums2.enqueue("")
+    add2 = ""            
+    maze2 = createMaze2()
     
-    while not findEnd(maze, add):
-        add = nums.dequeue()
+    while not findEnd(maze2, add2):
+        add2 = nums2.dequeue()
         for j in ["L", "R", "U", "D"]:
-            put = add + j
-            if valid(maze, put):
-                nums.enqueue(put)    
+            put = add2 + j
+            if valid(maze2, put):
+                nums2.enqueue(put)    
     
 main()
