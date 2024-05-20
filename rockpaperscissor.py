@@ -1,6 +1,6 @@
 import random
 
-user_wins = 0
+user_wins = 1
 computer_wins = 0
 
 options = ["rock", "paper", "scissors"]
